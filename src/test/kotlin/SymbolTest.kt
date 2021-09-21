@@ -23,7 +23,6 @@ class SymbolTest : SentenceTest {
         assertNotEquals(symbolInQuestion, symbolWithDifferentName, "Symbols with different names")
         assertNotEquals(symbolInQuestion, notASymbolWithSymbol, "Symbol and Not Symbol")
         assertNotEquals(symbolInQuestion, notASymbolEither, "Symbol and Not Symbol")
-
     }
 
     @Test
@@ -32,7 +31,7 @@ class SymbolTest : SentenceTest {
         val symbols = symbol.symbols()
         val equalSet = setOf(symbol.name)
 
-        assertTrue(symbols.contains(symbol.name), "Set containing it's object")
+        assertContains(symbols, symbol.name, "Set containing it's object")
         assertTrue(symbols.size == 1, "Test set size")
         assertEquals(symbols, equalSet, "Test equality with an equal set")
     }
