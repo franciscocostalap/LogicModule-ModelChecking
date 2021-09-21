@@ -1,20 +1,25 @@
 class Or(vararg disjuncts: Sentence) : Sentence {
+
     val disjuncts = mutableListOf<Sentence>()
 
     init {
         this.disjuncts.addAll(disjuncts)
     }
 
+
+    /**
+     * Evaluates the logical sentence.
+     */
     override fun evaluate(model: Map<String, Boolean>): Boolean =
-        disjuncts.all { cnjct -> cnjct.evaluate(model) }
+        disjuncts.any { cnjct -> cnjct.evaluate(model) }
 
     /**
      * @return string formula representing logical sentence.
      */
-    override fun formula(): String {
-        if (disjuncts.size == 1) return disjuncts[0].formula()
-        return disjuncts.joinToString(" ^ ") { cnjct -> Sentence.parenthesize(cnjct.formula()) }
-    }
+    override fun formula(): String =
+        if (disjuncts.size == 1) disjuncts[0].formula()
+        else disjuncts.joinToString(" v ") { cnjct -> Sentence.parenthesize(cnjct.formula()) }
+
 
     /**
      *  Returns a set of all symbols in the logical sentence.
@@ -24,12 +29,11 @@ class Or(vararg disjuncts: Sentence) : Sentence {
 
 
     override fun equals(other: Any?): Boolean =
-        other is And && this.disjuncts == other.conjuncts
+        other is Or && this.disjuncts == other.disjuncts
 
     override fun toString(): String {
-        val conjunctions = disjuncts.joinToString(", ") { it.toString() }
-
-        return "${this::class.simpleName}($conjunctions)"
+        val disjunctions = disjuncts.joinToString(", ") { it.toString() }
+        return "${this::class.simpleName}($disjunctions)"
     }
 
 }

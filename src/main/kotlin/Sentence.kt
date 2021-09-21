@@ -13,9 +13,7 @@ interface Sentence {
     /**
      *  Returns a set of all symbols names in the logical sentence.
      */
-
     fun symbols(): Set<String>
-
 
     companion object {
         fun parenthesize(s: String): String {
@@ -48,5 +46,4 @@ interface Sentence {
                 return "($s)"
         }
     }
-
 }
