@@ -39,4 +39,8 @@ class And(vararg conjuncts: Sentence) : Sentence {
         return "${this::class.simpleName}($conjunctions)"
     }
 
+    override fun hashCode(): Int {
+        return conjuncts.hashCode()
+    }
+
 }

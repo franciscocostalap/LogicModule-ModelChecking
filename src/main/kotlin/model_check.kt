@@ -20,12 +20,12 @@ fun modelCheck(knowledge: Sentence, query: Sentence): Boolean {
             remaining.remove(symbol)
 
             // Create a model where symbol is true
-            val modelTrue = HashMap<String, Boolean>(model)
+            val modelTrue = model.toMutableMap() as HashMap<String, Boolean>
             modelTrue[symbol] = true
 
 
             // Create a model where symbol is false
-            val modelFalse = HashMap<String, Boolean>(model)
+            val modelFalse = model.toMutableMap() as HashMap<String, Boolean>
             modelFalse[symbol] = false
 
             // Ensure entailment holds in both models

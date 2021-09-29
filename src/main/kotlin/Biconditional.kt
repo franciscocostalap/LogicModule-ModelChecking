@@ -1,4 +1,4 @@
-class Biconditional(val left: Sentence, val right: Sentence) : Sentence {
+data class Biconditional(val left: Sentence, val right: Sentence) : Sentence {
 
     /**
      * Evaluates the logical sentence.
@@ -28,7 +28,4 @@ class Biconditional(val left: Sentence, val right: Sentence) : Sentence {
     override fun toString(): String =
         "${this::class.simpleName}($left, $right)"
 
-
-    override fun equals(other: Any?): Boolean =
-        other is Biconditional && left == other.left && right == other.right
 }

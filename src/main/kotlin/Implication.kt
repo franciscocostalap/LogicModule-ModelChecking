@@ -1,4 +1,4 @@
-class Implication(val antecedent: Sentence, val consequent: Sentence) : Sentence {
+data class Implication(val antecedent: Sentence, val consequent: Sentence) : Sentence {
 
     /**
      * Evaluates the logical sentence.
@@ -28,10 +28,6 @@ class Implication(val antecedent: Sentence, val consequent: Sentence) : Sentence
 
     override fun toString(): String =
         "${this::class.simpleName}($antecedent, $consequent)"
-
-
-    override fun equals(other: Any?): Boolean =
-        other is Implication && antecedent == other.antecedent && consequent == other.consequent
 
 
 }

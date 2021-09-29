@@ -1,4 +1,4 @@
-class Not(val operand: Sentence) : Sentence {
+data class Not(val operand: Sentence) : Sentence {
 
     /**
      * Evaluates the logical sentence.
@@ -18,11 +18,6 @@ class Not(val operand: Sentence) : Sentence {
      *  Returns a set of all symbols' names in the logical sentence.
      */
     override fun symbols(): Set<String> = this.operand.symbols()
-
-
-    override fun equals(other: Any?): Boolean =
-        other is Not && this.operand == other.operand
-
 
     override fun toString(): String =
         "${this::class.simpleName}(${this.operand})"

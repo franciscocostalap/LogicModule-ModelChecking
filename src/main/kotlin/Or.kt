@@ -6,7 +6,6 @@ class Or(vararg disjuncts: Sentence) : Sentence {
         this.disjuncts.addAll(disjuncts)
     }
 
-
     /**
      * Evaluates the logical sentence.
      */
@@ -34,6 +33,10 @@ class Or(vararg disjuncts: Sentence) : Sentence {
     override fun toString(): String {
         val disjunctions = disjuncts.joinToString(", ") { it.toString() }
         return "${this::class.simpleName}($disjunctions)"
+    }
+
+    override fun hashCode(): Int {
+        return disjuncts.hashCode()
     }
 
 }

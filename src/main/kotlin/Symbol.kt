@@ -1,4 +1,4 @@
-class Symbol(val name: String) : Sentence {
+data class Symbol(val name: String) : Sentence {
 
     /**
      * Evaluates the logical sentence.
@@ -15,10 +15,6 @@ class Symbol(val name: String) : Sentence {
      *  Returns a set of all symbols in the logical sentence.
      */
     override fun symbols(): Set<String> = setOf(this.name)
-
-    override fun equals(other: Any?): Boolean {
-        return other is Symbol && this.name == other.name
-    }
 
     override fun toString(): String = this.name
 
